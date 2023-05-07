@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+
+    />
+  </head>
+  <body>
+    <div class="signup-box">
+      <h1>Sign Up</h1>
+     <form action="signin.php" method="post" id="form">
+        <label>First Name</label>
+        <input type="text" name="first_name" placeholder="First name" />
+        <label>Last Name</label>
+        <input type="text" name="Last_name" placeholder="Last name" />
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Email" />
+        <label>Mobile number</label>
+        <input type="tel" name="mobile" placeholder="Mobile number" />
+        <label>Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" />
+        <label>Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Confirm password" />
+        <input id="butt" type="Submit" value="Submit" id="input"/>
+      </form>
+      <p>
+        By clicking the Sign Up button,you agree to our <br />
+        <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+      </p>
+    </div>
+    <p class="para-2">
+      Already have an account? <a href="index.html">Login here</a>
+    </p>
+  </body>
+  <script>
+    const passwordField = document.querySelector('#password');
+const confirmPasswordField = document.querySelector('#confirm-password');
+
+confirmPasswordField.addEventListener('input', () => {
+  const password = passwordField.value;
+  const confirmPassword = confirmPasswordField.value;
+
+  if (password !== confirmPassword) {
+    confirmPasswordField.setCustomValidity('Passwords do not match');
+  } else {
+    confirmPasswordField.setCustomValidity('');
+  }
+});
+
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+  const inputs = form.querySelectorAll('input');
+  for (let i = 0; i < inputs.length; i++) {
+    if (inputs[i].value === '') {
+      event.preventDefault(); // prevent form submission
+      return;
+    }
+  }
+});
+
+
+  </script>
+</html>
